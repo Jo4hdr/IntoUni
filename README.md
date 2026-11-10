@@ -1,63 +1,63 @@
 # IntoUni
+### Tu guía a la educación superior
 
-Plataforma web académica para explorar universidades, programas y oportunidades de educación superior.
+**IntoUni** es una plataforma web creada para ayudar a estudiantes y aspirantes a la educación superior a encontrar información sobre universidades, programas académicos y beneficios educativos.
 
-## Tecnologías
-- PHP 8.1 o superior
-- MySQL 5.7+ / MariaDB
-- HTML5, CSS3 y JavaScript
+Nuestro propósito es facilitar el acceso a la información y ayudar a los jóvenes a tomar mejores decisiones sobre su futuro académico.
 
-## Instalación local (XAMPP)
-1. Abre la carpeta `IntoUni-final` del ZIP. Copia **todo lo que está dentro** (index.php, assets, config, etc.) directamente a `C:\xampp\htdocs\` en Windows. No copies la carpeta `IntoUni-final` como subcarpeta.
-2. Inicia Apache y MySQL desde XAMPP.
-3. Abre phpMyAdmin e importa `BD/IntoUni.sql`.
-4. Revisa `config/config.php`. Para XAMPP normalmente se usa `localhost`, usuario `root` y contraseña vacía.
-5. Verifica primero `http://localhost/assets/css/styles.css` (debe mostrar reglas CSS, no un error 404). Después abre `http://localhost/` y presiona `Ctrl + Shift + R`.
+## ¿Qué ofrece IntoUni?
 
-> Las rutas de esta versión son absolutas (`/...`): el proyecto debe instalarse en la raíz del sitio, o debes configurar un VirtualHost.
+- **Universidades:** permite consultar información sobre diferentes instituciones de educación superior.
+- **Programas académicos:** facilita la búsqueda de carreras y programas de estudio.
+- **Beneficios educativos:** brinda información sobre oportunidades como Matrícula Cero.
+- **Búsqueda de información:** ayuda a encontrar opciones según los intereses de cada estudiante.
+- **Registro de usuarios:** permite crear una cuenta para acceder a funciones personalizadas.
+- **Diseño responsive:** se adapta a computadores, tabletas y celulares.
 
-## Acceso inicial de administración
-- Correo: `admin@intouni.com`
-- Contraseña temporal: `Cambiar123!`
+## Objetivo del proyecto
 
-Cambia esta contraseña antes de publicar el sitio. No reutilices credenciales de demostración.
+Desarrollar una plataforma web interactiva que conecte a estudiantes y universidades, facilitando el acceso a información académica y oportunidades para continuar sus estudios superiores.
 
-## Publicación en InfinityFree
-1. Crea la base de datos MySQL desde el panel de InfinityFree.
-2. Importa `BD/IntoUni.sql` en phpMyAdmin remoto.
-3. En InfinityFree, el SQL debe importarse dentro de la base de datos ya creada: elimina las dos primeras instrucciones (`CREATE DATABASE` y `USE`) del archivo SQL antes de importar. Copia los valores de host, nombre de base de datos, usuario y contraseña que proporciona InfinityFree.
-4. Actualiza `config/config.php` con esos valores. En InfinityFree el host de MySQL no necesariamente es `localhost`.
-5. Sube el contenido de esta carpeta a `htdocs` mediante el administrador de archivos o FTP.
-6. Prueba registro, inicio de sesión, catálogo y paneles con cuentas de prueba.
+## Tecnologías utilizadas
 
-## Funcionalidades incluidas
-- Catálogo público de universidades con búsqueda por nombre y ubicación.
-- Catálogo de programas académicos.
-- Perfil público de cada universidad.
-- Registro e inicio de sesión con contraseñas cifradas mediante `password_hash()`.
-- Sesiones y validación de roles (administrador, aspirante y universidad).
-- Panel de aspirante y panel institucional.
-- Panel administrativo para registrar universidades y programas, y consultar aspirantes.
-- Diseño responsive para móviles, tabletas y computadores.
+| Tecnología | Función |
+|---|---|
+| HTML5 | Estructura de las páginas web |
+| CSS3 | Diseño y estilos |
+| JavaScript | Interactividad |
+| PHP | Funcionamiento del sistema |
+| MySQL | Almacenamiento de información |
+| XAMPP | Servidor local para el desarrollo |
 
-## Antes de entregar
-- Sustituye los datos de demostración por información real, verificada y autorizada.
-- Cambia la contraseña del administrador y elimina cuentas de prueba.
-- Configura HTTPS en el dominio.
-- Configura copias de seguridad y revisa los permisos de archivos.
-- Comprueba que la versión de PHP de hosting sea compatible.
+## Diseño
 
-## Alcance actual
-Esta es una primera versión funcional (MVP). Los beneficios están preparados para mostrarse cuando se asocian a una universidad en la base de datos. Las funciones avanzadas de edición/eliminación, recuperación de contraseña, verificación de correo y comparación personalizada pueden añadirse en una siguiente iteración.
+IntoUni utiliza una identidad visual basada en tonos vino tinto, blanco y rosa suave, buscando transmitir confianza, elegancia y profesionalismo.
 
-## Estado de validación
-- Se revisó la sintaxis de los archivos PHP con `php -l`.
-- No se ha verificado el funcionamiento de extremo a extremo con un servidor MySQL real ni se ha publicado en InfinityFree o GitHub.
-- El acceso de demostración debe cambiarse antes de publicar.
+Su interfaz está diseñada para ser moderna, sencilla y fácil de utilizar.
 
-## Si el sitio aparece sin colores
-- Comprueba que existe `C:\xampp\htdocs\assets\css\styles.css`.
-- Abre `http://localhost/assets/css/styles.css`. Si aparece 404, los archivos están en otra carpeta.
-- En `includes/header.php` el enlace es `/assets/css/styles.css?v=2`.
-- El ZIP tiene una carpeta contenedora `IntoUni-final`: **solo su contenido** debe ir dentro de `htdocs`.
-- El código se entrega con saltos de línea; si tu editor lo sigue mostrando en una línea, confirma que abriste los archivos de esta versión.
+## Metodología de desarrollo
+
+Para la elaboración del proyecto se utiliza la metodología ágil Scrum, que permite organizar las actividades y avanzar por etapas.
+
+También se trabaja con una arquitectura de tres capas y el patrón MVC para mantener el código organizado y facilitar futuras mejoras.
+
+## Estado del proyecto
+
+**En desarrollo.**
+
+Actualmente estamos trabajando en completar las funcionalidades, mejorar la experiencia de los usuarios, corregir errores y preparar la publicación del sitio web.
+
+## Equipo de desarrollo
+
+Proyecto desarrollado por estudiantes de la Especialidad en Sistemas del Colegio San José de Guanentá.
+
+**Integrantes:**
+- Johan Fiallo
+- Mariana Delgado
+- Mariangel Duque
+
+## Nuestra misión
+
+Queremos que IntoUni sea una herramienta útil para los jóvenes que desean continuar sus estudios, permitiéndoles conocer nuevas oportunidades y encontrar opciones que se adapten a sus intereses y metas profesionales.
+
+**IntoUni: tu futuro comienza con una buena decisión.**
