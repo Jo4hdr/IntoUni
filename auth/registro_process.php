@@ -1,0 +1,21 @@
+<?php require_once __DIR__.'/../config/config.php';
+if($_SERVER['REQUEST_METHOD']!=='POST')redirect('/auth/registro.php');
+verify_csrf();
+$nombre=trim($_POST['nombre']??'');
+$apellidos=trim($_POST['apellidos']??'');
+$email=filter_var(trim($_POST['email']??''),FILTER_VALIDATE_EMAIL);
+$password=$_POST['password']??'';
+$telefono=trim($_POST['telefono']??'');
+$ciudad=trim($_POST['ciudad']??'');
+$colegio=trim($_POST['colegio']??'');
+if(!$nombre||!$apellidos||!$email||strlen($password)<8){flash('Revisa los campos. La contraseña debe tener al menos 8 caracteres.','error');
+redirect('/auth/registro.php');
+}$hash=password_hash($password,PASSWORD_DEFAULT);
+try{$st=$db->prepare('INSERT INTO aspirantes(nombre,apellidos,email,password,telefono,ciudad,colegio) VALUES(?,?,?,?,?,?,?)');
+$st->bind_param('sssssss',$nombre,$apellidos,$email,$hash,$telefono,$ciudad,$colegio);
+$st->execute();
+flash('Tu cuenta fue creada. Ya puedes iniciar sesión.');
+redirect('/auth/login.php');
+}catch(mysqli_sql_exception $e){flash($e->getCode()===1062?'Ese correo ya está registrado.':'No fue posible crear la cuenta. Inténtalo nuevamente.','error');
+redirect('/auth/registro.php');
+}

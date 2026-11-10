@@ -1,0 +1,15 @@
+<?php require_once __DIR__.'/../config/config.php';
+require_role('admin');
+if($_SERVER['REQUEST_METHOD']!=='POST')redirect('/admin/index.php');
+verify_csrf();
+$nombre=trim($_POST['nombre']??'');
+$modalidad=trim($_POST['modalidad']??'Presencial');
+$duracion=(int)($_POST['duracion']??0);
+$uid=(int)($_POST['universidad']??0);
+if(!$nombre||$duracion<1||$uid<1){flash('Revisa los datos del programa.','error');
+redirect('/admin/programa_nuevo.php');
+}$st=$db->prepare('INSERT INTO programas(nombre,modalidad,duracion,id_universidad) VALUES(?,?,?,?)');
+$st->bind_param('ssii',$nombre,$modalidad,$duracion,$uid);
+$st->execute();
+flash('Programa registrado correctamente.');
+redirect('/admin/index.php');

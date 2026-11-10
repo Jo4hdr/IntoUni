@@ -1,0 +1,17 @@
+<?php require_once __DIR__.'/../config/config.php';
+if($_SERVER['REQUEST_METHOD']!=='POST')redirect('/auth/login.php');
+verify_csrf();
+$email=filter_var(trim($_POST['email']??''),FILTER_VALIDATE_EMAIL);
+$pass=$_POST['password']??'';
+if(!$email||$pass===''){flash('Ingresa un correo y una contraseña válidos.','error');
+redirect('/auth/login.php');
+}$roles=[['administradores','id_admin','admin'],['aspirantes','id_aspirante','aspirante'],['universidades','id_universidad','universidad']];
+foreach($roles as [$table,$idcol,$role]){$st=$db->prepare("SELECT $idcol AS id, nombre, password AS hash FROM $table WHERE email=? LIMIT 1");
+$st->bind_param('s',$email);
+$st->execute();
+$row=$st->get_result()->fetch_assoc();
+if($row&&password_verify($pass,$row['hash'])){session_regenerate_id(true);
+$_SESSION['user']=['id'=>(int)$row['id'],'nombre'=>$row['nombre'],'email'=>$email,'rol'=>$role];
+redirect('/dashboard.php');
+}}flash('Correo o contraseña incorrectos.','error');
+redirect('/auth/login.php');
